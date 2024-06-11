@@ -23,9 +23,11 @@
                <span class="nav__logo-circle">T</span>
                <span class="nav__logo-name">Thomas Pickell</span>
             </a>
-            <div class="nav__menu">
+            <div class="nav__menu" id="nav-menu">
                <span class="nav__title">Menu</span>
+
                <h3 class="nav__name">Thomas</h3>
+
                <ul class="nav__list">
                   <li class="nav__item">
                      <a href="#home" class="nav__link">Home</a>
@@ -53,7 +55,7 @@
 
             <div class="nav__buttons">
                <!-- Toggle button-->
-               <div class="nav__toggle">
+               <div class="nav__toggle" id="nav-toggle">
                   <i class="ri-menu-4-line"></i>
                </div>
             </div>
@@ -64,12 +66,92 @@
       <main class="main">
          <!--==================== HOME ====================-->
          <section class="home section" id="home">
-            
+            <div class="home__container container grid">
+               <h1 class="home__menu">
+                  Thomas Pickell
+               </h1>
+
+               <div class="home__perfil">
+                  <div class="home__image">
+                     <img src="assets/img/home-perfil.jpg" alt="image" class="home__img">
+                     <div class="home__shadow"></div>
+                     <img src="assets/img/curved-arrow.svg" alt="" class="home__arrow">
+                     <img src="assets/img/random-lines.svg" alt="" class="home__line">
+
+                     <div class="geometric__box"></div>
+                  </div>
+
+                  <div class="home__social">
+                     <a href="https://www.instagram.com/thombisk/" target="_blank" class="home__social-link">
+                        <i class="ri-instagram-line"></i>
+                     </a>
+
+
+                     <a href="https://www.linkedin.com/in/thomaspickell/" target="_blank" class="home__social-link">
+                        <i class="ri-linkedin-box-line"></i>
+                     </a>
+
+
+                     <a href="https://github.com/ThomasPickle7" target="_blank" class="home__social-link">
+                        <i class="ri-github-fill"></i>
+                     </a>
+                  </div>
+               </div>
+               <div class="home__info">
+                  <p class="home__description">
+                     <b>Thomas Pickell</b> is an Engineer with a passion for wireless and high-speed systems design. He has experience in Java, Python, and C and is always looking to learn more. He is currently working as a research intern at <b>Rice University</b> and is looking to expand his knowledge and experiences.
+                  </p>
+
+                  <a href="#about" class="home__scroll">
+                     <div class="home__scroll-box">
+                        <i class="ri-arrow-down-s-line"></i>
+                     </div>
+
+                     <span class="home__scroll-text">Scroll Down</span>
+                  </a>
+               </div>
+            </div>
          </section>
 
          <!--==================== ABOUT ====================-->
          <section class="about section" id="about">
-            
+            <div class="about__container container grid">
+               <h2 class="section__title-1">About Me</h2>
+
+               <div class="about__perfil">
+                  <div class="about__image">
+                     <img src="assets/img/about-perfil.jpg" alt="" class="about__img">
+
+                     <div class="about__shadow"></div>
+
+                     <div class="geometric-box"></div>
+                     <img src="assets/img/about-perfil.jpg" alt="" class="about__line">
+                     <div class="about__box"></div>
+                  </div>
+               </div>
+
+               <div class="about__info">
+                  <p class="about__description">
+                     I'm passionate about wireless technology and the future of hihg-speed systems. I have experience in Java, Python, and Verilog. I'm currently a rising junior at <b>Rice University</b> studying Electrical and Computer Engineering, where I've participated in numerous personal and team-based design projects.
+                  </p>
+
+                  <ul class="about__list">
+                     <li class="about__item">
+                        My software skills include: Python, Java, C, Verilog, MATLAB, and Rust. I also know some C++ and website design languages like HTML and CSS.
+                     </li>
+                  </ul>
+
+                  <div class="about__buttons">
+                     <a href="#contact" class="button">
+                        <i class="ri-send-plane-line"></i>Contact Me
+                     </a>
+
+                     <a href="https://www.linkedin.com/thomaspickell" traget="_blank" class="button-ghost">
+                        <i class="ri-linkedin-box-line"></i>
+                     </a>
+                  </div>
+               </div>
+            </div>
          </section>
 
          <!--==================== SERVICES ====================-->
