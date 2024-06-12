@@ -85,8 +85,9 @@ a {
 
 img {
   display: block;
-  max-width: 100%;
+  max-width: 400%;
   height: auto;
+  
 }
 
 /*=============== THEME ===============*/
@@ -103,8 +104,11 @@ img {
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .container {
-  max-width: 1120px;
   margin-inline: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .grid {
@@ -188,7 +192,7 @@ img {
 }
 
 .nav__logo{
-  display: flex;
+  display: relative;
   column-gap: .5rem;
   align-items: center;
   font-weight: var(--font-semi-bold);
@@ -212,17 +216,18 @@ img {
 .nav__toggle{
   font-size: 1.25rem;
   cursor: pointer;
+  position: relative;
 
 }
 
 /* Navigation for mobile devices */
-@media screen and (max-width: 1150px){
+@media screen and (max-width: 4000px){
   .nav__menu{
     position: fixed;
     top: -100%;
     left: 0;
     background-color: hsla(14, 98%, 50%, .2);
-    width: 1000%;
+    width: 100%;
     padding-block: 1.8rem 5rem;
     text-align: center;
     backdrop-filter: blur(8px);
@@ -538,6 +543,8 @@ img {
   position: relative;
   border: 4px solid var(--white-color);
   z-index: 1;
+  max-width: 300%;
+  height: auto;
 
 }
 
@@ -549,11 +556,11 @@ img {
 }
 
 .about__shadow{
-  width: 150px;
-  height: 385px;
+  width: 400px;
+  height: 500px;
   background-color: var(--body-color);
   top: -2.5rem;
-  right: -3.5rem;
+  right: -4rem;
   border-bottom: 4px solid var(--black-color);
   transition: background-color .4s;
 }
@@ -565,6 +572,7 @@ img {
 
 .about__line{
   filter: invert(1);
+  opacity: 0;
   right: -1.25rem;
   top: 6rem;
   width: 50%;
@@ -585,6 +593,7 @@ img {
 
 .about__description{
   position: relative;
+  padding: 1rem 0 2rem;
   color: var(--title-color);
   margin-bottom: 1.5rem;
 }
@@ -621,21 +630,30 @@ img {
 
 .services__card{
   position: relative;
+  padding: 1rem 1rem 2rem;
+  transition: background-color .4s;
+  background-color: var(--white-color);
+  align-items: center;
+  width: 500px;
+  height: 300px;
 }
 .services__content{
-  height: 100%;
+  height: 90%;
+  width:500px;
   background-color: var(--body-color);
   border: 4px solid var(--black-color);
-  padding: 6rem 1rem 3rem;
+  padding: 2rem 1rem 3rem;
   z-index: 5;
+
   position: relative;
   transition: background-color .4s, border 4s;
 }
 
 .services__border{
   position: absolute;
+  padding: 1rem 1rem 2rem;
   width: 100%;
-  height: 100%;
+  height: 75%;
   border: 4px solid var(--first-color);
   top: 0;
   left: 0;
@@ -677,16 +695,19 @@ img {
 .projects{
   background-color: var(--container-color);
   transition: background-color .4s;
+  position: relative;
 }
 
 .projects__container{
   row-gap: 2rem;
+  align-items: center;
 }
 
 .projects__card{
   padding: 1rem 1rem 2rem;
   transition: background-color .4s;
   background-color: var(--white-color);
+  align-items: center;
 }
 
 .projects__image{
@@ -767,17 +788,19 @@ img {
 /*=============== CONTACT ===============*/
 .contact{
   padding-bottom: 0;
+  overflow: hidden;
 }
 .contact__container{
   position: relative;
   grid-template-rows: 300px max-content max-content;
   row-gap: 0;
+  padding-top: 2rem;
 }
 
 .contact__data{
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 35%;
   background-color: var(--container-color);
   padding: 3rem 1.5rem 3.5rem;
   border-bottom: 4px solid var(--first-color);
@@ -809,6 +832,7 @@ img {
 .contact__mail{
   position: relative;
   background-color: var(--black-color);
+  height: 40rem;
   padding: 5rem 1.5rem 2.5rem;
   margin-top: -2.5rem;
   transition: background-color .4s;
@@ -824,7 +848,7 @@ img {
 .contact__form,
 .contact__group{
   display: grid;
-  row-gap: 1.25rem;
+  row-gap: 4rem;
 }
 
 .contact__form{
@@ -843,6 +867,140 @@ img {
   outline: none;
   border: none;
 }
+
+.contact__input{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--black-color);
+  border: 3px solid var(--black-color-light);
+  color: var(--white-color);
+  padding: .5rem 1rem;
+  font-weight: var(--font-medium);
+  transition: border .4s background-color .4s;
+}
+
+.contact__input::placeholder{
+  color: var(--text-color-light);
+  transition:opacity .4s;
+
+}
+
+.contact__input:focus{
+  border: 3px solid var(--white-color);
+}
+
+.contact__input:-webkit-autofill{
+  transition: background-color 6000s, color 6000s;
+}
+
+.contact__label{
+  position: relative;
+  top: -16px;
+  left: 10px;
+  color: var(--text-color-light);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-medium);
+  background-color: var(--black-color);
+  padding: 8px;
+  pointer-events: none;
+  transition: top .4s, opacity .4s, background-color .4s;
+  opacity: 0;
+}
+
+.contact__form .contact__area{
+  height: 10rem;
+}
+
+.contact__area textarea{
+  resize: none;
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
+  padding-bottom: .7rem;
+  font-size: var(--normal-font-size);
+  font-family: var(--body-font);
+  height: 300%;
+
+}
+
+.contact__button{
+  background-color: var(--first-color);
+  color: var(--white-color);
+  padding: 1rem;
+  font-weight: var(--font-medium);
+  cursor: pointer;
+  transition: background-color .4s;
+}
+.contact__input:focus::placeholder{
+  opacity: 0;
+}
+
+.contact__input:focus + .contact__label,
+.contact__input:not(:placeholder-shown).contact__input:not(:focus) + .contact__labe{
+  opacity: 1;
+  top: -16px;
+}
+
+.contact__social{
+  display: grid;
+  row-gap: 1rem;
+  background-color: hsl(0, 0%, 10%);
+  padding-block: 1rem 2rem;
+  text-align: center;
+}
+
+.contact__social-arrow{
+  width: 32px;
+  margin: 0 auto;
+}
+
+.contact__social-data{
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5rem;
+}
+
+.contact__social-description{
+  color: var(--text-color-light);
+  font-size: var(--small-font-size);
+  margin-bottom: .5rem;
+}
+
+.contact__social-description-2{
+  color: var(--text-color-light);
+  font-size: var(--small-font-size);
+  font-weight: var(--font-semi-bold);
+}
+
+.contact__social-links{
+  display: flex;
+  justify-content: center;
+  column-gap: .75rem;
+}
+
+.contact__social-link{
+  background-color: var(--black-color-light);
+  padding: 6px;
+  color: var(--white-color);
+  font-size: 1.25rem;
+  display: grid;
+  place-items: center;
+  transition: background-color .4s;
+}
+
+.contact__social-link:hover{
+  background-color: var(--first-color);
+}
+
+.contact__message{
+  color: var(--white-color);
+  font-size: var(--small-font-size);
+  position: absolute;
+  bottom: -25.5rem;
+  left: 0;
+  transition: opacity .4s;
+}
+
 /* Opaque placeholder */
 
 

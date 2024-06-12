@@ -23,6 +23,7 @@
                <span class="nav__logo-circle">T</span>
                <span class="nav__logo-name">Thomas Pickell</span>
             </a>
+
             <div class="nav__menu" id="nav-menu">
                <span class="nav__title">Menu</span>
 
@@ -99,7 +100,7 @@
                </div>
                <div class="home__info">
                   <p class="home__description">
-                     <b>Thomas Pickell</b> is an Engineer with a passion for wireless and high-speed systems design. He has experience in Java, Python, and C and is always looking to learn more. He is currently working as a research intern at <b>Rice University</b> and is looking to expand his knowledge and experiences.
+                     I'm <b>Thomas Pickell</b>! I'm an Engineer with a passion for wireless and high-speed systems design. I have experience primarily in Java, Python, and C. I'm currently working as a research intern at <b>Rice University</b> and i'm always looking for new challenges.
                   </p>
 
                   <a href="#about" class="home__scroll">
@@ -132,12 +133,15 @@
 
                <div class="about__info">
                   <p class="about__description">
-                     I'm passionate about wireless technology and the future of hihg-speed systems. I have experience in Java, Python, and Verilog. I'm currently a rising junior at <b>Rice University</b> studying Electrical and Computer Engineering, where I've participated in numerous personal and team-based design projects.
+                     I'm passionate about wireless technology and the future of high-speed systems. I have experience in Java, Python, and Verilog. I'm currently a rising junior at <b>Rice University</b> studying Electrical and Computer Engineering, where I've participated in numerous personal and team-based design projects. I've taken advanced courses in Computer Architecture, Embedded Systems, and Machine Learning. I'm currently working as a research intern at <b>Rice Networks Group</b> and am always looking for new challenges.
                   </p>
 
                   <ul class="about__list">
                      <li class="about__item">
                         My software skills include: Python, Java, C, Verilog, MATLAB, and Rust. I also know some C++ and website design languages like HTML and CSS.
+                     </li>
+                     <li class="about__item">
+                        I have ample experience in electrical CAD software, including KiCAD, LTSpice, Altium, and Xilinx Vivado. I am proficient in SOLIDWORKS design and management of complex assemblies.
                      </li>
                   </ul>
 
@@ -312,7 +316,6 @@
 
             </div>
          </section>
-
          <!--==================== CONTACT ====================-->
          <section class="contact section" id="contact">
             <div class="contact__container grid">
@@ -334,7 +337,7 @@
 
                <div class="contact__mail">
                   <h2 class="contact__title">
-                     Send me a message
+                     Message me here!
                   </h2>
                   <form action="" class="contact__form" id="contact-form">
                      <div class="contact__group">
@@ -349,14 +352,16 @@
                         </div>
 
                         <div class="contact__box">
-                           <input type="text" name="user_subject" class="contact__input" id="name" required placeholder="Subject">
+                           <input type="text" name="user_subject" class="contact__input" id="subject" required placeholder="Subject">
                            <label for="subject" class="contact__label">Subject</label>
                         </div>
 
                         <div class="contact__box contact__area">
-                           <textarea name="user__message" id="message" class="contact__input" required placeholer="Type message here"></textarea>
-                           <label for="name" class="contact__label">Message</label>
+                           <textarea name="user_message" id="message" class="contact__input" required placeholer="Type message here"></textarea>
+                           <label for="message" class="contact__label">Message</label>
                         </div>
+
+                        <p class="contact__message" id="contact-message"></p>
 
                         <button type="submit" class="contact__button button">
                            <i class="ri-send-plane-line"></i> Send Message
@@ -392,7 +397,6 @@
                </div>
             </div>
          </section>
-      </main>
 
       <!--==================== FOOTER ====================-->
       <footer class="footer">
@@ -406,7 +410,7 @@
       <script src=""></script>
       
       <!--=============== EMAIL JS ===============-->
-      
+      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
       <!--=============== MAIN JS ===============-->
       <script src="assets/js/main.js"></script>
