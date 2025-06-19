@@ -1,506 +1,403 @@
 <!DOCTYPE html>
-   <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Pickell - Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- RemixIcon -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 
-      <!--=============== FAVICON ===============-->
-      <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom animation for the scroll indicator */
+        @keyframes scroll-down {
+          0% { transform: translateY(-0.5rem); opacity: 0; }
+          50% { transform: translateY(0); opacity: 1; }
+          100% { transform: translateY(0.5rem); opacity: 0; }
+        }
+        .animate-scroll-down {
+            animation: scroll-down 2s infinite;
+        }
+        /* Style for the toast notification */
+        #notification {
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased">
 
-      <!--=============== REMIXICONS ===============-->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.4.0/remixicon.css" crossorigin="">
-
-      <!--=============== CSS ===============-->
-      <link rel="stylesheet" href="assets/css/styles.css">
-
-      <title>Thomas Pickell</title>
-   </head>
-   <body>
-      <!--==================== HEADER ====================-->
-      <header class="header" id="header">
-         <nav class="nav container">
-            <a href="#" class="nav__logo">
-               <span class="nav__logo-circle">T</span>
-               <span class="nav__logo-name">Thomas Pickell</span>
+    <!-- Header -->
+    <header id="header" class="bg-gray-100/80 backdrop-blur-md fixed top-0 left-0 w-full z-50 transition-shadow duration-300">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-2 text-xl font-bold text-gray-900">
+                <span class="bg-gray-900 text-white w-8 h-8 rounded-full flex items-center justify-center font-semibold">T</span>
+                <span>Thomas Pickell</span>
             </a>
 
-            <div class="nav__menu" id="nav-menu">
-               <span class="nav__title">Menu</span>
+            <!-- Desktop Menu -->
+            <ul class="hidden md:flex items-center space-x-8">
+                <li><a href="#home" class="font-medium text-gray-600 hover:text-indigo-600 transition-colors">Home</a></li>
+                <li><a href="#about" class="font-medium text-gray-600 hover:text-indigo-600 transition-colors">About</a></li>
+                <li><a href="#experience" class="font-medium text-gray-600 hover:text-indigo-600 transition-colors">Experience</a></li>
+                <li><a href="#projects" class="font-medium text-gray-600 hover:text-indigo-600 transition-colors">Projects</a></li>
+                <li><a href="#contact" class="font-medium text-gray-600 hover:text-indigo-600 transition-colors">Contact</a></li>
+            </ul>
 
-               <h3 class="nav__name">Thomas</h3>
-
-               <ul class="nav__list">
-                  <li class="nav__item">
-                     <a href="#home" class="nav__link">Home</a>
-                  </li>
-
-                  <li class="nav__item">
-                     <a href="#about" class="nav__link">About Me</a>
-                  </li>
-
-                  <li class="nav__item">
-                     <a href="#projects" class="nav__link">Projects</a>
-                  </li>
-
-                  <li class="nav__item">
-                     <a href="#contact" class="nav__link">Contact Me</a>
-                  </li>
-                    
-               </ul>
-
-               <!-- Close Button-->
-               <div class="nav__close" id="nav-close">
-                  <i class="ri-close-line"></i>
-               </div>
+            <!-- Mobile Menu Toggle -->
+            <button id="nav-toggle" class="md:hidden text-gray-900 text-2xl">
+                <i class="ri-menu-3-line"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="nav-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-gray-900/50 backdrop-blur-sm">
+            <div class="absolute top-0 right-0 h-full w-4/5 max-w-sm bg-white shadow-xl p-6">
+                <div class="flex justify-between items-center mb-12">
+                     <h3 class="text-xl font-bold">Menu</h3>
+                     <button id="nav-close" class="text-gray-600 hover:text-gray-900 text-3xl">
+                        <i class="ri-close-line"></i>
+                     </button>
+                </div>
+                <ul class="flex flex-col space-y-6 text-center">
+                    <li><a href="#home" class="nav-link text-xl font-medium text-gray-700 hover:text-indigo-600">Home</a></li>
+                    <li><a href="#about" class="nav-link text-xl font-medium text-gray-700 hover:text-indigo-600">About</a></li>
+                    <li><a href="#experience" class="nav-link text-xl font-medium text-gray-700 hover:text-indigo-600">Experience</a></li>
+                    <li><a href="#projects" class="nav-link text-xl font-medium text-gray-700 hover:text-indigo-600">Projects</a></li>
+                    <li><a href="#contact" class="nav-link text-xl font-medium text-gray-700 hover:text-indigo-600">Contact</a></li>
+                </ul>
             </div>
-
-            <div class="nav__buttons">
-               <!-- Toggle button-->
-               <div class="nav__toggle" id="nav-toggle">
-                  <i class="ri-menu-4-line"></i>
-               </div>
-            </div>
-         </nav>
-      </header>
-
-      <!--==================== MAIN ====================-->
-      <main class="main">
-         <!--==================== HOME ====================-->
-         <section class="home section" id="home">
-            <div class="home__container container grid">
-               <h1 class="home__menu">
-                  Thomas Pickell
-               </h1>
-
-               <div class="home__perfil">
-                  <div class="home__image">
-                     <img src="assets/img/home-perfil.jpg" alt="image" class="home__img">
-                     <div class="home__shadow"></div>
-                     <img src="assets/img/curved-arrow.svg" alt="" class="home__arrow">
-                     <img src="assets/img/random-lines.svg" alt="" class="home__line">
-
-                     <div class="geometric__box"></div>
-                  </div>
-
-                  <div class="home__social">
-                     <a href="https://www.instagram.com/thombisk/" target="_blank" class="home__social-link">
-                        <i class="ri-instagram-line"></i>
-                     </a>
-
-
-                     <a href="https://www.linkedin.com/in/thomaspickell/" target="_blank" class="home__social-link">
-                        <i class="ri-linkedin-box-line"></i>
-                     </a>
-
-
-                     <a href="https://github.com/ThomasPickle7" target="_blank" class="home__social-link">
-                        <i class="ri-github-fill"></i>
-                     </a>
-                     <a href="https://drive.google.com/file/d/1FQsqlJ-A-i1LE8BSFYZ8jSK0lHP8ZdmV/view?usp=sharing" target="_blank" class="home__social-link">
-                        <i class="ri-article-fill"></i>
-                     </a>
-                  </div>
-               </div>
-               <div class="home__info">
-                  <p class="home__description">
-                     I'm <b>Thomas Pickell</b>! I'm an Engineer with a passion for wireless and high-speed systems design. This website serves to archive my various projects and experiences, including source code and links to additional information. I have experience primarily in Java, Python, and C. I'm currently working as a research intern at <b>Rice University</b> and i'm always looking for new challenges.
-                  </p>
-
-                  <a href="#about" class="home__scroll">
-                     <div class="home__scroll-box">
-                        <i class="ri-arrow-down-s-line"></i>
-                     </div>
-
-                     <span class="home__scroll-text">Scroll Down</span>
-                  </a>
-               </div>
-            </div>
-         </section>
-
-         <!--==================== ABOUT ====================-->
-         <section class="about section" id="about">
-            <div class="about__container container grid">
-               <h2 class="section__title-1">About Me</h2>
-
-               <div class="about__perfil">
-                  <div class="about__image">
-                     <img src="assets/img/about-perfil.jpg" alt="" class="about__img">
-
-                     <div class="about__shadow"></div>
-
-                     <div class="geometric-box"></div>
-                     <img src="assets/img/about-perfil.jpg" alt="" class="about__line">
-                     <div class="about__box"></div>
-                  </div>
-               </div>
-
-               <div class="about__info">
-                  <p class="about__description">
-                     I'm passionate about wireless technology and the future of high-speed systems. I have experience in Java, Python, and Verilog. I'm currently a rising junior at <b>Rice University</b> studying Electrical and Computer Engineering, where I've participated in numerous personal and team-based design projects. I've taken advanced courses in Computer Architecture, Embedded Systems, and Machine Learning. I'm currently working as a research intern at <b>Rice Networks Group</b> and am always looking for new challenges.
-                  </p>
-
-                  <ul class="about__list">
-                     <li class="about__item">
-                        My software skills include: Python, Java, C, Verilog, MATLAB, and Rust. I also know some C++ and website design languages like HTML and CSS.
-                     </li>
-                     <li class="about__item">
-                        I have ample experience in electrical CAD software, including KiCAD, LTSpice, Altium, and Xilinx Vivado. I am proficient in SOLIDWORKS design and management of complex assemblies.
-                     </li>
-                  </ul>
-
-                  <div class="about__buttons">
-                     <a href="#contact" class="button">
-                        <i class="ri-send-plane-line"></i>Contact Me
-                     </a>
-
-                     <a href="https://www.linkedin.com/in/thomaspickell" traget="_blank" class="button-ghost">
-                        <i class="ri-linkedin-box-line"></i>
-                     </a>
-                  </div>
-               </div>
-            </div>
-         </section>
-
-         <!--==================== SERVICES ====================-->
-         <section class="services section">
-            <h2 class="section__title-2">
-               <span>Services</span>
-            </h2>
-
-            <div class="services__container containter grid">
-               <article class="services__card">
-                  <div class="services__border"></div>
-
-                  <div class="services__content">
-                     <div class="services__icon">
-                        <div class="services__box"></div>
-                        <i class="ri-radar-fill"></i>
-                     </div>
-
-                     <h2 class="services__title">Wireless Systems</h2>
-
-                     <p class="services__description">
-                        I have experience in wireless systems design and have worked on projects involving the design of wireless systems, including designing and performing expirements on terahertz positioning systems done at <b>Rice University</b>.
-                     </p>
-                  </div>
-               </article>
-               <article class="services__card">
-                  <div class="services__border"></div>
-
-                  <div class="services__content">
-                     <div class="services__icon">
-                        <div class="services__box"></div>
-                        <i class="ri-robot-fill"></i>
-                     </div>
-
-                     <h2 class="services__title">Embedded Systems</h2>
-                        
-                     <p class="services__description">
-                        I've addressed many real-world challenges through embedded systems projects developed in Python and C and have applied that knowledge in my roles on the <b>Rice Robotics</b> and <b>Rice Flight</b> design teams.
-                     </p>
-                  </div>
-               </article>
-               <article class="services__card">
-                  <div class="services__border"></div>
-
-                  <div class="services__content">
-                     <div class="services__icon">
-                        <div class="services__box"></div>
-                        <i class="ri-cpu-line"></i>
-                     </div>
-
-                     <h2 class="services__title">Computer Architecture</h2>
-
-                     <p class="services__description">
-                        I have taken numerous courses in computer architecture and have experience in designing and implementing computer systems, including implementation of a 16-bit CPU on a <b>Xilinx FPGA</b>.
-                     </p>
-                  </div>
-               </article>
-               <div class="about__buttons">
-                  <a href="https://drive.google.com/file/d/1FQsqlJ-A-i1LE8BSFYZ8jSK0lHP8ZdmV/view?usp=sharing" class="button">
-                     <i class="ri-article-fill"></i></i>Resume
-                  </a>
-               </div>
-            </div>
-         </section>
-
-         <!--==================== PROJECTS ====================-->
-         <section class="projects section" id="projects">
-            <h2 class="section__title-1">
-               <span>Projects.</span>
-            </h2>
-
-            <div class="projects__container container grid">
-
-               <article class="projects__card">
-                  <div class="projects__image">
-                     <img src="assets/img/wireless.jpeg" alt="image" class="projects__img">
-                     <a href="https://networks.rice.edu/" class="projects__button button">
-                        <i class="ri-arrow-right-up-line"></i>
-                     </a>
-
-                     
-                  </div>
-
-                  <div class="projects__content">
-                     <h3 class="projects__subtitle">Wireless Systems</h3>
-                     <h2 class="projects__title">2D position estimation with a random programmable metasurface</h2>
-
-
-                     <p class="projects__description">
-                        An ongoing research project that uses a programmable metasurface to estimate the position of a reciever in sub-terahertz bands.
-                     </p>
-                     <p class="projects__description">
-                        Relevant Skills: Python, MATLAB, Wireless Systems, Metasurfaces, Position Estimation, Data Analysis, Data Visualization, Expiremental Design
-                     </p>
-                  </div>
-
-                  <div class="projects__buttons">
-                     <a href="https://github.com/ThomasPickle7/Research-Notes-2024" target="_blank" class="projects__link">
-                        <i class="ri-github-line"></i>
-                     </a>
-                     <a href="https://networks.rice.edu/" target="_blank" class="projects__link">
-                        <i class="ri-window-line"></i>
-                     </a>
-                  </div>
-               </article>
-
-               
-               
-               <article class="projects__card">
-                  <div class="projects__image">
-                     <img src="assets/img/beatbot.png" alt="image" class="projects__img">
-                     <a href="https://github.com/ThomasPickle7/378-Project" class="projects__button button">
-                        <i class="ri-arrow-right-up-line"></i>
-                     </a>
-
-                     
-                  </div>
-
-                  <div class="projects__content">
-                     <h3 class="projects__subtitle">Machine Learning</h3>
-                     <h2 class="projects__title">Beat Bot</h2>
-
-
-                     <p class="projects__description">
-                        A machine learning system that uses a neural network to generate music.
-                     </p>
-                     <p class="projects__description">
-                        Relevant Skills: Python, TensorFlow, Neural Networks, Frequency Analysis, Aggregation, Cleaning, and Visualization of Data
-                     </p>
-                  </div>
-
-                  <div class="projects__buttons">
-                     <a href="https://github.com/ThomasPickle7/378-Project" target="_blank" class="projects__link">
-                        <i class="ri-github-line"></i>
-                     </a>
-                     <a href="https://github.com/ThomasPickle7/378-Project" target="_blank" class="projects__link">
-                        <i class="ri-window-line"></i>
-                     </a>
-                  </div>
-               </article>
-
-               <article class="projects__card">
-                  <div class="projects__image">
-                     <img src="assets/img/power_nap.png" alt="image" class="projects__img">
-                     <a href="https://devpost.com/software/powernap-1u4c9v" class="projects__button button">
-                        <i class="ri-arrow-right-up-line"></i>
-                     </a>
-
-                     
-                  </div>
-
-                  <div class="projects__content">
-                     <h3 class="projects__subtitle">Data Science</h3>
-                     <h2 class="projects__title">Power Nap</h2>
-
-
-                     <p class="projects__description">
-                        An award-winning data science project that uses XGBoost to generate a hypnogram based on EKG data.
-                     </p>
-                     <p class="projects__description">
-                        Relevant Skills: Python, XGBoost, UX Design, Data Cleaning, Data Visualization, Machine Learning, Data Analysis
-                     </p>
-                  </div>
-
-                  <div class="projects__buttons">
-                     <a href="https://github.com/ThomasPickle7/Datathon2024" target="_blank" class="projects__link">
-                        <i class="ri-github-line"></i>
-                     </a>
-                     <a href="https://devpost.com/software/powernap-1u4c9v" target="_blank" class="projects__link">
-                        <i class="ri-window-line"></i>
-                     </a>
-                  </div>
-               </article>
-
-               <article class="projects__card">
-                  <div class="projects__image">
-                     <img src="assets/img/fallsense.jpeg" alt="image" class="projects__img">
-                     <a href="https://github.com/ThomasPickle7/ELEC-327" class="projects__button button">
-                        <i class="ri-arrow-right-up-line"></i>
-                     </a>
-
-                     
-                  </div>
-
-                  <div class="projects__content">
-                     <h3 class="projects__subtitle">Embedded Systems</h3>
-                     <h2 class="projects__title">FallSense</h2>
-
-
-                     <p class="projects__description">
-                        An embedded systems project that utilizes an accelerometer to detect falls and alert emergency contacts.
-                     </p>
-                     <p class="projects__description">
-                        Relevant Skills: C, MSP430, I2C, UART, Bluetooth, PCB Design
-                     </p>
-                  </div>
-
-                  <div class="projects__buttons">
-                     <a href="https://github.com/ThomasPickle7/ELEC-327" target="_blank" class="projects__link">
-                        <i class="ri-github-line"></i>
-                     </a>
-                     <a href="https://github.com/ThomasPickle7/ELEC-327" target="_blank" class="projects__link">
-                        <i class="ri-window-line"></i>
-                     </a>
-                  </div>
-               </article>
-
-               <article class="projects__card">
-                  <div class="projects__image">
-                     <img src="assets/img/fittrack.jpeg" alt="image" class="projects__img">
-                     <a href="https://www.hackster.io/?gclid=CjwKCAjw1K-zBhBIEiwAWeCOF98bj1fJkl3kdc6Y47SJbW5KydFrYyveksGvG5AKo2GbKIGNQlD8MxoCCmoQAvD_BwE" class="projects__button button">
-                        <i class="ri-arrow-right-up-line"></i>
-                     </a>
-
-                     
-                  </div>
-
-                  <div class="projects__content">
-                     <h3 class="projects__subtitle">Embedded Systems</h3>
-                     <h2 class="projects__title">FitTrack</h2>
-
-
-                     <p class="projects__description">
-                        A fitness tracker that uses sensors and custom software drivers to track fitness data, including a physical prototype and integrated PCB.
-                     </p>
-                     <p class="projects__description">
-                        Relevant Skills: Python, I2C, Linux, Eagle, PCB Design
-                     </p>
-                  </div>
-
-                  <div class="projects__buttons">
-                     <a href="https://github.com/ThomasPickle7/ENGI-301" target="_blank" class="projects__link">
-                        <i class="ri-github-line"></i>
-                     </a>
-                     <a href="https://www.hackster.io/?gclid=CjwKCAjw1K-zBhBIEiwAWeCOF98bj1fJkl3kdc6Y47SJbW5KydFrYyveksGvG5AKo2GbKIGNQlD8MxoCCmoQAvD_BwE" target="_blank" class="projects__link">
-                        <i class="ri-window-line"></i>
-                     </a>
-                  </div>
-               </article>
-
-
-
-
-            </div>
-         </section>
-         <!--==================== CONTACT ====================-->
-         <section class="contact section" id="contact">
-            <div class="contact__container grid">
-               <div class="contact__data">
-                  <h2 class="section__title-2">
-                     <span>Contact Me</span>
-                  </h2>
-
-                  <p class="contact__description-1">
-                     Any inquiries or questions? Feel free to contact me. I'm always open to new opportunities and collaborations to expand my knowledge.
-                  </p>
-
-                  <p class="contact__description-2">
-                     Enter your name, email, and message below and I'll get back to you as soon as possible.
-                  </p>
-
-                  <div class="geometric-box"></div>
-               </div>
-
-               <div class="contact__mail">
-                  <h2 class="contact__title">
-                     Message me here!
-                  </h2>
-                  <form action="" class="contact__form" id="contact-form">
-                     <div class="contact__group">
-                        <div class="contact__box">
-                           <input type="text" name="user_name" class="contact__input" id="name" required placeholder="First Name">
-                           <label for="name" class="contact__label">First Name</label>
-                        </div>
-
-                        <div class="contact__box">
-                           <input type="email" name="user_email" class="contact__input" id="email" required placeholder="Email Address">
-                           <label for="email" class="contact__label">Email</label>
-                        </div>
-
-                        <div class="contact__box">
-                           <input type="text" name="user_subject" class="contact__input" id="subject" required placeholder="Subject">
-                           <label for="subject" class="contact__label">Subject</label>
-                        </div>
-
-                        <div class="contact__box contact__area">
-                           <textarea name="user_message" id="message" class="contact__input" required placeholer="Type message here"></textarea>
-                           <label for="message" class="contact__label">Message</label>
-                        </div>
-
-                        <p class="contact__message" id="contact-message"></p>
-
-                        <button type="submit" class="contact__button button">
-                           <i class="ri-send-plane-line"></i> Send Message
-                        </button>
-                     </div>
-                  </form>
-               </div>
-
-               <div class="contact__social">
-                  <img src="assets/img/curved-arrow.svg" alt="" class="contact__social">
-
-                  <div class="contact__social-data">
-                     <div>
-                        <p class="contact__social-description-1">
-                           
-                        </p>
-
-                        <p class="contact__social-description-1">
-                           Alternatively, you can reach me via LinkedIn or Instagram.
-                        </p>
-                     </div>
-
-                     <div class="contact__social-links">
-                        <a href="https://instagram.com/thombisk" target="blank" class="contact__social-link">
-                           <i class="ri-linkedin-box-line"></i>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- Home Section -->
+        <section id="home" class="min-h-screen container mx-auto px-6 flex items-center pt-24 md:pt-0">
+            <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+                <!-- Info -->
+                <div class="text-center md:text-left">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">Thomas Pickell</h1>
+                    <p class="mt-4 text-lg text-gray-600">
+                        An Electrical and Computer Engineering student specializing in <b class="font-semibold text-indigo-600">FPGA-based signal processing, high-frequency RF systems, and THz RADAR.</b>
+                    </p>
+                     <p class="mt-2 text-gray-600">Passionate about ensuring mission-critical reliability for human spaceflight systems through rigorous engineering.</p>
+                    <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                        <a href="#contact" class="bg-gray-900 text-white font-semibold px-6 py-3 rounded-lg hover:bg-indigo-600 transition-colors shadow-lg hover:shadow-indigo-500/30">
+                            Contact Me <i class="ri-send-plane-line ml-2"></i>
                         </a>
-
-                        <a href="https://linkedin.com/in/thomaspickell" target="blank" class="contact__social-link">
-                           <i class="ri-instagram-line"></i>
+                        <a href="Resume_.pdf" target="_blank" class="bg-white text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors border border-gray-300 shadow-sm">
+                            My Resume <i class="ri-article-line ml-2"></i>
                         </a>
-                     </div>
-                  </div>
-               </div>
+                    </div>
+                </div>
+
+                <!-- Perfil Image -->
+                <div class="relative flex justify-center">
+                    <div class="relative w-64 h-64 md:w-80 md:h-80">
+                         <img src="assets/img/about-perfil.jpg" alt="Thomas Pickell Profile" class="rounded-full object-cover w-full h-full border-8 border-white shadow-2xl">
+                        <!-- Social Links -->
+                        <div class="absolute -left-6 top-1/2 -translate-y-1/2 flex flex-col space-y-3">
+                            <a href="https://www.linkedin.com/in/thomaspickell/" target="_blank" class="social-icon"><i class="ri-linkedin-box-fill"></i></a>
+                            <a href="https://github.com/ThomasPickle7" target="_blank" class="social-icon"><i class="ri-github-fill"></i></a>
+                            <a href="https://www.instagram.com/thombisk/" target="_blank" class="social-icon"><i class="ri-instagram-line"></i></a>
+                        </div>
+                    </div>
+                </div>
+                 <!-- Scroll Down Indicator -->
+                <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1 text-gray-600 hover:text-indigo-600 transition-colors">
+                    <span class="w-8 h-8 rounded-full border-2 border-gray-400 flex items-center justify-center">
+                        <i class="ri-arrow-down-line animate-scroll-down"></i>
+                    </span>
+                    <span class="text-sm font-medium">Scroll Down</span>
+                </a>
             </div>
-         </section>
+        </section>
 
-      <!--==================== FOOTER ====================-->
-      <footer class="footer">
-         
-      </footer>
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Me</h2>
+                <div class="grid md:grid-cols-5 gap-12 items-center">
+                    <div class="md:col-span-2 flex justify-center">
+                        <img src="https://placehold.co/400x500/e2e8f0/334155?text=About" alt="About Thomas" class="rounded-lg shadow-xl w-full max-w-sm">
+                    </div>
+                    <div class="md:col-span-3">
+                        <p class="text-lg text-gray-600 mb-6">
+                           I am a dedicated Electrical and Computer Engineering student at <b>Rice University</b> (Class of 2026), driven by a passion for creating robust, mission-critical systems. My expertise lies in FPGA development, RF systems, and RADAR technology.
+                        </p>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Education</h3>
+                                <p class="text-gray-600"><b>BS in Electrical and Computer Engineering</b> - Rice University</p>
+                                <p class="text-sm text-gray-500">Aug 2022 - May 2026 | Houston, TX | GPA: 3.6/4.0</p>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-lg mb-2">Technical Skills</h3>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="skill-badge">Python</span>
+                                    <span class="skill-badge">C/C++</span>
+                                    <span class="skill-badge">Verilog</span>
+                                    <span class="skill-badge">Java</span>
+                                    <span class="skill-badge">Shell/TCL</span>
+                                    <span class="skill-badge">FPGA</span>
+                                    <span class="skill-badge">PolarFire SoC</span>
+                                    <span class="skill-badge">Libero SoC</span>
+                                    <span class="skill-badge">Xilinx Vivado</span>
+                                    <span class="skill-badge">Altium</span>
+                                    <span class="skill-badge">THz Systems</span>
+                                    <span class="skill-badge">RADAR</span>
+                                    <span class="skill-badge">Git</span>
+                                    <span class="skill-badge">Linux</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-gray-50">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Experience</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Experience Card 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="ri-radio-line text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Research Intern</h3>
+                        <p class="font-medium text-gray-600">Notre Dame Wireless Institute</p>
+                        <p class="text-sm text-gray-500 mb-3">May 2025 - Present</p>
+                        <p class="text-gray-600">Architecting an FPGA-based data acquisition system for the Radiohound RF sensor network, improving sampling rates by over 4x in initial tests.</p>
+                    </div>
+                    <!-- Experience Card 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="ri-radar-line text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Research Assistant</h3>
+                        <p class="font-medium text-gray-600">Terahertz RADAR Lab</p>
+                        <p class="text-sm text-gray-500 mb-3">Mar 2025 - Present</p>
+                        <p class="text-gray-600">Characterizing and repairing a 3.4THz RADAR imaging system, performing precision alignment on Quantum Cascade Lasers (QCLs).</p>
+                    </div>
+                    <!-- Experience Card 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="ri-router-line text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Research Assistant</h3>
+                        <p class="font-medium text-gray-600">Rice Networks Group</p>
+                        <p class="text-sm text-gray-500 mb-3">May 2024 - Dec 2024</p>
+                        <p class="text-gray-600">Engineered a THz localization algorithm with 2mm accuracy and automated data collection, reducing experiment time by 75%.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <!--========== SCROLL UP ==========-->
-      
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Personal Projects</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+                    <!-- Project Card -->
+                    <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden group max-w-sm">
+                        <div class="relative">
+                           <img src="https://placehold.co/600x400/334155/e2e8f0?text=CPU" alt="FPGA CPU Project" class="w-full h-56 object-cover">
+                           <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                               <a href="https://github.com/ThomasPickle7" target="_blank" class="text-white text-4xl opacity-0 group-hover:opacity-100 transform group-hover:scale-110 transition-all duration-300"><i class="ri-arrow-right-up-line"></i></a>
+                           </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-sm font-medium text-indigo-600">Computer Architecture</h3>
+                            <h4 class="text-xl font-bold mt-1 mb-3">16-bit FPGA CPU</h4>
+                            <p class="text-gray-600 text-sm">Architected, implemented, and validated a custom 16-bit CPU on an AMD Xilinx FPGA, verifying its reliability with a recursive Fibonacci sequence calculation.</p>
+                            <div class="mt-4 flex space-x-4">
+                               <a href="https://github.com/ThomasPickle7" target="_blank" class="project-link"><i class="ri-github-line mr-1"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more project cards as needed from previous versions if desired -->
+                </div>
+            </div>
+        </section>
 
-      <!--=============== SCROLLREVEAL ===============-->
-      <script src=""></script>
-      
-      <!--=============== EMAIL JS ===============-->
-      <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-900 text-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Me</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto mb-12">Have a question or want to collaborate? Feel free to reach out. I'm always open to new opportunities and discussions.</p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
+                    <form id="contact-form">
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <input type="text" name="user_name" required placeholder="Your Name" class="form-input">
+                            <input type="email" name="user_email" required placeholder="Your Email" class="form-input">
+                        </div>
+                        <div class="mb-6">
+                            <input type="text" name="user_subject" required placeholder="Subject" class="form-input">
+                        </div>
+                        <div class="mb-6">
+                            <textarea name="user_message" rows="5" required placeholder="Your Message" class="form-input"></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-indigo-500/40 w-full md:w-auto">
+                                Send Message <i class="ri-send-plane-fill ml-2"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
 
-      <!--=============== MAIN JS ===============-->
-      <script src="assets/js/main.js"></script>
-   </body>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://www.linkedin.com/in/thomaspickell/" target="_blank" class="footer-link"><i class="ri-linkedin-box-fill"></i></a>
+                <a href="https://github.com/ThomasPickle7" target="_blank" class="footer-link"><i class="ri-github-fill"></i></a>
+                <a href="https://www.instagram.com/thombisk/" target="_blank" class="footer-link"><i class="ri-instagram-line"></i></a>
+            </div>
+            <p>&copy; 2025 Thomas Pickell. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="notification" class="fixed bottom-5 right-5 bg-gray-900 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-10">
+        <p id="notification-message"></p>
+    </div>
+
+    <!-- Custom CSS for components -->
+    <style>
+        .social-icon {
+            @apply w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-700 text-2xl shadow-md hover:bg-indigo-600 hover:text-white transition-all duration-300;
+        }
+        .project-link {
+            @apply text-gray-600 hover:text-indigo-600 font-medium text-sm transition-colors flex items-center;
+        }
+        .form-input {
+            @apply w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow;
+        }
+        .footer-link {
+            @apply text-gray-400 hover:text-white text-2xl transition-colors;
+        }
+        .skill-badge {
+            @apply bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-medium;
+        }
+    </style>
+    
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navMenu = document.getElementById('nav-menu');
+            const navToggle = document.getElementById('nav-toggle');
+            const navClose = document.getElementById('nav-close');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const header = document.getElementById('header');
+            const contactForm = document.getElementById('contact-form');
+            const notification = document.getElementById('notification');
+            const notificationMessage = document.getElementById('notification-message');
+
+            // --- Mobile Menu Logic ---
+            if (navToggle) {
+                navToggle.addEventListener('click', () => {
+                    navMenu.classList.remove('hidden');
+                });
+            }
+
+            if (navClose) {
+                navClose.addEventListener('click', () => {
+                    navMenu.classList.add('hidden');
+                });
+            }
+
+            // Close mobile menu when a link is clicked
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.add('hidden');
+                });
+            });
+
+            // --- Header Shadow on Scroll ---
+            window.addEventListener('scroll', () => {
+                if (window.scrollY >= 50) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
+                }
+            });
+
+            // --- EmailJS Contact Form ---
+            // Initialize EmailJS with your Public Key
+            emailjs.init('7XfUTJA0Jc2j9vbL_'); // Replace with your EmailJS Public Key
+
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Show a "sending" notification
+                showNotification('Sending message...', 'bg-blue-600');
+
+                emailjs.sendForm('service_cupa7qq', 'template_t5q7dtg', this)
+                    .then(() => {
+                        showNotification('Message sent successfully!', 'bg-green-600');
+                        contactForm.reset();
+                    }, (error) => {
+                        showNotification('Failed to send message. Please try again.', 'bg-red-600');
+                        console.log('FAILED...', error);
+                    });
+            });
+
+            // --- Toast Notification Function ---
+            let notificationTimeout;
+            function showNotification(message, bgColor) {
+                clearTimeout(notificationTimeout);
+                notificationMessage.textContent = message;
+                notification.className = `fixed bottom-5 right-5 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-10 ${bgColor}`;
+
+                // Animate in
+                setTimeout(() => {
+                   notification.classList.remove('opacity-0', 'translate-y-10');
+                   notification.classList.add('opacity-100', 'translate-y-0');
+                }, 100);
+
+                // Hide after 5 seconds
+                notificationTimeout = setTimeout(() => {
+                    notification.classList.remove('opacity-100', 'translate-y-0');
+                    notification.classList.add('opacity-0', 'translate-y-10');
+                }, 5000);
+            }
+        });
+    </script>
+</body>
 </html>
+```
+
+I have made the following key updates based on your resume:
+
+* **Professional Summary:** The introduction in the "Home" section now reflects your specialization in FPGA-based signal processing, RF systems, and your passion for mission-critical engineering.
+* **About Me Section:** This has been rewritten to be more concise and now includes your education details (University, GPA, graduation date) and a new "Technical Skills" section with styled badges for better readability.
+* **New Experience Section:** I've replaced the old "Services" section with a new "Experience" section. This now prominently features your three most recent research roles at Notre Dame, the Terahertz RADAR Lab, and the Rice Networks Group, matching the descriptions on your resume.
+* **Updated Projects:** The projects section is now titled "Personal Projects" and features your 16-bit FPGA CPU implementation as the main highlight. I've removed the older projects to align with the focus of your new resume.
+* **Resume Link:** The "My Resume" button now correctly points to `Resume_.pdf`.
+* **Copyright Year:** Updated to 2025.
+
+The website now serves as a strong, accurate reflection of your latest professional resu
