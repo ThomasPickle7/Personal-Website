@@ -5,43 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thomas Pickell - Portfolio</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- RemixIcon -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
 
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    
-    <!-- Custom Styles -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
         /* Custom animation for the scroll indicator */
         @keyframes scroll-down {
-          0% { transform: translateY(-0.5rem); opacity: 0; }
-          50% { transform: translateY(0); opacity: 1; }
-          100% { transform: translateY(0.5rem); opacity: 0; }
+            0% { transform: translateY(-0.5rem); opacity: 0; }
+            50% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(0.5rem); opacity: 0; }
         }
         .animate-scroll-down {
             animation: scroll-down 2s infinite;
-        }
-        /* Style for the toast notification */
-        #notification {
-            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 antialiased">
 
-    <!-- Header -->
     <header id="header" class="bg-gray-100/80 backdrop-blur-md fixed top-0 left-0 w-full z-50 transition-shadow duration-300">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#home" class="flex items-center space-x-2 text-xl font-bold text-gray-900">
@@ -49,7 +37,6 @@
                 <span>Thomas Pickell</span>
             </a>
 
-            <!-- Desktop Menu -->
             <ul class="hidden md:flex items-center space-x-8">
                 <li><a href="#home" class="font-medium text-gray-600 hover:text-indigo-600 transition-colors">Home</a></li>
                 <li><a href="#about" class="font-medium text-gray-600 hover:text-indigo-600 transition-colors">About</a></li>
@@ -58,20 +45,18 @@
                 <li><a href="#contact" class="font-medium text-gray-600 hover:text-indigo-600 transition-colors">Contact</a></li>
             </ul>
 
-            <!-- Mobile Menu Toggle -->
             <button id="nav-toggle" class="md:hidden text-gray-900 text-2xl">
                 <i class="ri-menu-3-line"></i>
             </button>
         </nav>
         
-        <!-- Mobile Menu -->
         <div id="nav-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-full bg-gray-900/50 backdrop-blur-sm">
             <div class="absolute top-0 right-0 h-full w-4/5 max-w-sm bg-white shadow-xl p-6">
                 <div class="flex justify-between items-center mb-12">
-                     <h3 class="text-xl font-bold">Menu</h3>
-                     <button id="nav-close" class="text-gray-600 hover:text-gray-900 text-3xl">
+                    <h3 class="text-xl font-bold">Menu</h3>
+                    <button id="nav-close" class="text-gray-600 hover:text-gray-900 text-3xl">
                         <i class="ri-close-line"></i>
-                     </button>
+                    </button>
                 </div>
                 <ul class="flex flex-col space-y-6 text-center">
                     <li><a href="#home" class="nav-link text-xl font-medium text-gray-700 hover:text-indigo-600">Home</a></li>
@@ -84,13 +69,10 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
 
-        <!-- Home Section -->
         <section id="home" class="min-h-screen container mx-auto px-6 flex items-center pt-24 md:pt-0">
             <div class="grid md:grid-cols-2 gap-12 items-center w-full">
-                <!-- Info -->
                 <div class="text-center md:text-left">
                     <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">Thomas Pickell</h1>
                     <p class="mt-4 text-lg text-gray-600">
@@ -101,17 +83,15 @@
                         <a href="#contact" class="bg-gray-900 text-white font-semibold px-6 py-3 rounded-lg hover:bg-indigo-600 transition-colors shadow-lg hover:shadow-indigo-500/30">
                             Contact Me <i class="ri-send-plane-line ml-2"></i>
                         </a>
-                        <a href="Resume_.pdf" target="_blank" class="bg-white text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors border border-gray-300 shadow-sm">
+                        <a href="assets/files/Resume_.pdf" target="_blank" class="bg-white text-gray-900 font-semibold px-6 py-3 rounded-lg hover:bg-gray-200 transition-colors border border-gray-300 shadow-sm">
                             My Resume <i class="ri-article-line ml-2"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Perfil Image -->
                 <div class="relative flex justify-center">
                     <div class="relative w-64 h-64 md:w-80 md:h-80">
                          <img src="assets/img/about-perfil.jpg" alt="Thomas Pickell Profile" class="rounded-full object-cover w-full h-full border-8 border-white shadow-2xl">
-                        <!-- Social Links -->
                         <div class="absolute -left-6 top-1/2 -translate-y-1/2 flex flex-col space-y-3">
                             <a href="https://www.linkedin.com/in/thomaspickell/" target="_blank" class="social-icon"><i class="ri-linkedin-box-fill"></i></a>
                             <a href="https://github.com/ThomasPickle7" target="_blank" class="social-icon"><i class="ri-github-fill"></i></a>
@@ -119,8 +99,7 @@
                         </div>
                     </div>
                 </div>
-                 <!-- Scroll Down Indicator -->
-                <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1 text-gray-600 hover:text-indigo-600 transition-colors">
+                 <a href="#about" class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-1 text-gray-600 hover:text-indigo-600 transition-colors">
                     <span class="w-8 h-8 rounded-full border-2 border-gray-400 flex items-center justify-center">
                         <i class="ri-arrow-down-line animate-scroll-down"></i>
                     </span>
@@ -129,7 +108,6 @@
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">About Me</h2>
@@ -139,7 +117,7 @@
                     </div>
                     <div class="md:col-span-3">
                         <p class="text-lg text-gray-600 mb-6">
-                           I am a dedicated Electrical and Computer Engineering student at <b>Rice University</b> (Class of 2026), driven by a passion for creating robust, mission-critical systems. My expertise lies in FPGA development, RF systems, and RADAR technology.
+                            I am a dedicated Electrical and Computer Engineering student at <b>Rice University</b> (Class of 2026), driven by a passion for creating robust, mission-critical systems. My expertise lies in FPGA development, RF systems, and RADAR technology.
                         </p>
                         <div class="space-y-6">
                             <div>
@@ -172,12 +150,10 @@
             </div>
         </section>
         
-        <!-- Experience Section -->
         <section id="experience" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Experience</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Experience Card 1 -->
                     <div class="bg-white rounded-lg shadow-md overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300">
                          <img src="assets/img/radiohound.jpg" alt="Notre Dame Wireless Institute" class="w-full h-56 object-cover">
                          <div class="p-6">
@@ -185,9 +161,8 @@
                             <p class="font-medium text-gray-600">Notre Dame Wireless Institute</p>
                             <p class="text-sm text-gray-500 mb-3">May 2025 - Present</p>
                             <p class="text-gray-600">Architecting an FPGA-based data acquisition system for the Radiohound RF sensor network, improving sampling rates by over 4x in initial tests.</p>
-                         </div>
+                        </div>
                     </div>
-                    <!-- Experience Card 2 -->
                     <div class="bg-white rounded-lg shadow-md overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300">
                          <img src="assets/img/waveform.jpg" alt="Terahertz RADAR Lab" class="w-full h-56 object-cover">
                          <div class="p-6">
@@ -195,9 +170,8 @@
                             <p class="font-medium text-gray-600">Terahertz RADAR Lab</p>
                             <p class="text-sm text-gray-500 mb-3">Mar 2025 - Present</p>
                             <p class="text-gray-600">Characterizing and repairing a 3.4THz RADAR imaging system, performing precision alignment on Quantum Cascade Lasers (QCLs).</p>
-                         </div>
+                        </div>
                     </div>
-                    <!-- Experience Card 3 -->
                     <div class="bg-white rounded-lg shadow-md overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300">
                          <img src="assets/img/ricewireless.jpg" alt="Rice Networks Group" class="w-full h-56 object-cover">
                          <div class="p-6">
@@ -205,18 +179,16 @@
                             <p class="font-medium text-gray-600">Rice Networks Group</p>
                             <p class="text-sm text-gray-500 mb-3">May 2024 - Dec 2024</p>
                             <p class="text-gray-600">Engineered a THz localization algorithm and experimental design with 2mm accuracy and automated data collection, reducing experiment time by 75%.</p>
-                         </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Personal Projects</h2>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project Card 1 -->
                     <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                             <i class="ri-cpu-line text-3xl"></i>
@@ -224,9 +196,8 @@
                         <h3 class="text-xl font-bold mb-2">16-bit FPGA CPU</h3>
                         <h4 class="text-sm font-medium text-indigo-600 mb-3">Computer Architecture</h4>
                         <p class="text-gray-600 mb-4">Architected and validated a custom 16-bit CPU on an AMD Xilinx FPGA, verified with a recursive Fibonacci sequence.</p>
-                        <a href="https://github.com/ThomasPickle7" target="_blank" class="project-link font-semibold"><i class="ri-github-line mr-1"></i> View on GitHub</a>
+                        <a href="https://github.com/ThomasPickle7" target="_blank" class="project-link font-semibold">
                     </div>
-                    <!-- Project Card 2 -->
                     <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                             <i class="ri-music-2-line text-3xl"></i>
@@ -236,7 +207,6 @@
                         <p class="text-gray-600 mb-4">A classic machine learning project that utilizes various neural network architectures to classify songs by genre.</p>
                          <a href="https://github.com/ThomasPickle7/378-Project" target="_blank" class="project-link font-semibold"><i class="ri-github-line mr-1"></i> View on GitHub</a>
                     </div>
-                    <!-- Project Card 3 -->
                     <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                             <i class="ri-award-line text-3xl"></i>
@@ -250,38 +220,41 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-gray-900 text-white">
+        <section id="contact" class="py-20 bg-gray-900 text-gray-300">
             <div class="container mx-auto px-6">
                 <div class="text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Me</h2>
-                    <p class="text-gray-300 max-w-2xl mx-auto mb-12">Have a question or want to collaborate? Feel free to reach out. I'm always open to new opportunities and discussions.</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Contact Me</h2>
+                    <p class="max-w-2xl mx-auto mb-12">Have a question or want to collaborate? Feel free to reach out. I'm always open to new opportunities and discussions.</p>
                 </div>
-                <div class="max-w-3xl mx-auto bg-gray-800 p-8 rounded-lg shadow-lg">
-                    <form id="contact-form">
-                        <div class="grid md:grid-cols-2 gap-6 mb-6">
-                            <input type="text" name="user_name" required placeholder="Your Name" class="form-input">
-                            <input type="email" name="user_email" required placeholder="Your Email" class="form-input">
+                <div class="max-w-4xl mx-auto text-center">
+                    <div class="flex flex-col md:flex-row justify-center items-center space-y-8 md:space-y-0 md:space-x-12">
+                        <div class="flex flex-col items-center">
+                            <div class="bg-gray-800 text-indigo-400 w-20 h-20 rounded-full flex items-center justify-center mb-4 ring-2 ring-indigo-500/50">
+                                <i class="ri-mail-send-line text-4xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white mb-1">Email</h3>
+                            <p class="text-gray-400 mb-2">For any inquiries.</p>
+                            <a href="mailto:tapickell03@gmail.com" class="text-lg text-indigo-400 hover:text-indigo-300 transition-colors">
+                               tapickell03@gmail.com
+                            </a>
                         </div>
-                        <div class="mb-6">
-                            <input type="text" name="user_subject" required placeholder="Subject" class="form-input">
+                        <div class="flex flex-col items-center">
+                            <div class="bg-gray-800 text-indigo-400 w-20 h-20 rounded-full flex items-center justify-center mb-4 ring-2 ring-indigo-500/50">
+                                <i class="ri-phone-line text-4xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white mb-1">Phone</h3>
+                            <p class="text-gray-400 mb-2">To reach me directly.</p>
+                            <a href="tel:+2145465605" class="text-lg text-indigo-400 hover:text-indigo-300 transition-colors">
+                                214-546-5605
+                            </a>
                         </div>
-                        <div class="mb-6">
-                            <textarea name="user_message" rows="5" required placeholder="Your Message" class="form-input"></textarea>
-                        </div>
-                        <div class="text-center">
-                            <button type="submit" class="bg-indigo-600 text-white font-semibold px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-indigo-500/40 w-full md:w-auto">
-                                Send Message <i class="ri-send-plane-fill ml-2"></i>
-                            </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </section>
 
     </main>
     
-    <!-- Footer -->
     <footer class="bg-gray-800 text-gray-400 py-8">
         <div class="container mx-auto px-6 text-center">
             <div class="flex justify-center space-x-6 mb-4">
@@ -293,21 +266,12 @@
         </div>
     </footer>
 
-    <!-- Toast Notification -->
-    <div id="notification" class="fixed bottom-5 right-5 bg-gray-900 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-10">
-        <p id="notification-message"></p>
-    </div>
-
-    <!-- Custom CSS for components -->
     <style>
         .social-icon {
             @apply w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-700 text-2xl shadow-md hover:bg-indigo-600 hover:text-white transition-all duration-300;
         }
         .project-link {
             @apply text-gray-600 hover:text-indigo-600 font-medium text-sm transition-colors inline-flex items-center;
-        }
-        .form-input {
-            @apply w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-shadow;
         }
         .footer-link {
             @apply text-gray-400 hover:text-white text-2xl transition-colors;
@@ -317,7 +281,6 @@
         }
     </style>
     
-    <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navMenu = document.getElementById('nav-menu');
@@ -325,9 +288,6 @@
             const navClose = document.getElementById('nav-close');
             const navLinks = document.querySelectorAll('.nav-link');
             const header = document.getElementById('header');
-            const contactForm = document.getElementById('contact-form');
-            const notification = document.getElementById('notification');
-            const notificationMessage = document.getElementById('notification-message');
 
             // --- Mobile Menu Logic ---
             if (navToggle) {
@@ -357,46 +317,6 @@
                     header.classList.remove('shadow-md');
                 }
             });
-
-            // --- EmailJS Contact Form ---
-            // Initialize EmailJS with your Public Key
-            emailjs.init('7XfUTJA0Jc2j9vbL_'); // Replace with your EmailJS Public Key
-
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show a "sending" notification
-                showNotification('Sending message...', 'bg-blue-600');
-
-                emailjs.sendForm('service_cupa7qq', 'template_t5q7dtg', this)
-                    .then(() => {
-                        showNotification('Message sent successfully!', 'bg-green-600');
-                        contactForm.reset();
-                    }, (error) => {
-                        showNotification('Failed to send message. Please try again.', 'bg-red-600');
-                        console.log('FAILED...', error);
-                    });
-            });
-
-            // --- Toast Notification Function ---
-            let notificationTimeout;
-            function showNotification(message, bgColor) {
-                clearTimeout(notificationTimeout);
-                notificationMessage.textContent = message;
-                notification.className = `fixed bottom-5 right-5 text-white py-3 px-6 rounded-lg shadow-lg opacity-0 transform translate-y-10 ${bgColor}`;
-
-                // Animate in
-                setTimeout(() => {
-                   notification.classList.remove('opacity-0', 'translate-y-10');
-                   notification.classList.add('opacity-100', 'translate-y-0');
-                }, 100);
-
-                // Hide after 5 seconds
-                notificationTimeout = setTimeout(() => {
-                    notification.classList.remove('opacity-100', 'translate-y-0');
-                    notification.classList.add('opacity-0', 'translate-y-10');
-                }, 5000);
-            }
         });
     </script>
 </body>
