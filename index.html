@@ -31,7 +31,7 @@
             @apply w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-700 text-2xl shadow-md hover:bg-indigo-600 hover:text-white transition-all duration-300;
         }
         .project-link {
-            @apply text-gray-600 hover:text-indigo-600 font-medium text-sm transition-colors inline-flex items-center;
+            @apply text-indigo-600 hover:text-indigo-800 font-medium text-sm transition-colors inline-flex items-center;
         }
         .footer-link {
             @apply text-gray-400 hover:text-white text-2xl transition-colors;
@@ -62,7 +62,7 @@
             opacity: 1;
         }
         .modal-content {
-            background: rgba(23, 23, 33, 0.6); /* Semi-transparent dark background */
+            background: rgba(23, 23, 33, 0.8); /* Semi-transparent dark background */
             border: 1px solid rgba(255, 255, 255, 0.1);
             width: 90%;
             max-width: 800px; /* Increased max-width for better layout */
@@ -269,6 +269,7 @@
                         <p class="text-gray-600 mb-4">A classic machine learning project that utilizes various neural network architectures to classify songs by genre.</p>
                          <a href="https://github.com/ThomasPickle7/378-Project" target="_blank" class="project-link font-semibold"><i class="ri-github-fill mr-1"></i> View on GitHub</a>
                     </div>
+                    <!-- Updated PowerNap Card -->
                     <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                             <i class="ri-award-line text-3xl"></i>
@@ -276,7 +277,7 @@
                         <h3 class="text-xl font-bold mb-2">PowerNap</h3>
                         <h4 class="text-sm font-medium text-indigo-600 mb-3">Data Science & Social Impact</h4>
                         <p class="text-gray-600 mb-4">'Best Social Impact' award-winner at Rice Datathon. Predicts sleep quality from hypnograms and explores its link to socioeconomic status.</p>
-                         <a href="https://github.com/ThomasPickle7/Datathon2024" target="_blank" class="project-link font-semibold"><i class="ri-github-fill mr-1"></i> View on GitHub</a>
+                        <button onclick="openModal('powernapModal')" class="project-link font-semibold">Learn More <i class="ri-arrow-right-line ml-1"></i></button>
                     </div>
                 </div>
             </div>
@@ -318,6 +319,7 @@
         </div>
     </footer>
 
+    <!-- MODALS -->
     <div id="radiohoundModal" class="modal-overlay" onclick="closeModal('radiohoundModal')">
         <div class="modal-content rounded-xl p-8" onclick="event.stopPropagation()">
             <div class="flex justify-between items-center mb-4">
@@ -334,7 +336,7 @@
                 <div>
                     <h3 class="text-lg font-semibold text-white mb-2">System Architecture</h3>
                     <p class="mb-4">The architecture creates a direct hardware path from the sensor input to system memory, using a custom Verilog module to pack data and a DMA controller to manage the high-speed transfer. Bare-metal C drivers provide precise, low-level control over the hardware.</p>
-                    <img src="assets/img/poster.png" alt="RadioHound System Architecture Diagram" class="rounded-lg border border-gray-700">
+                    <img src="assets/img/poster.png" alt="RadioHound System Architecture Diagram" class="rounded-lg border border-gray-700" onerror="this.onerror=null;this.src='https://placehold.co/600x400/171721/ffffff?text=Architecture+Diagram';">
                 </div>
 
                 <div>
@@ -358,6 +360,51 @@
                 <div class="pt-4 border-t border-gray-700 flex justify-end space-x-4">
                      <a href="https://github.com/ThomasPickle7/reu-scripts" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-semibold inline-flex items-center">View on GitHub <i class="ri-github-fill ml-2"></i></a>
                      <button onclick="closeModal('radiohoundModal')" class="bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- New PowerNap Modal -->
+    <div id="powernapModal" class="modal-overlay" onclick="closeModal('powernapModal')">
+        <div class="modal-content rounded-xl p-8" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-white">PowerNap: Sleep Quality & Socioeconomic Analysis</h2>
+                <button onclick="closeModal('powernapModal')" class="text-gray-400 hover:text-white text-3xl">&times;</button>
+            </div>
+            
+            <div class="space-y-6 text-gray-300">
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2">The Goal</h3>
+                    <p>This project, which won the 'Best Social Impact' award at the 2024 Rice Datathon, aimed to model and predict sleep quality using hypnogram data and investigate potential correlations between sleep patterns and socioeconomic indicators.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Data Analysis & Modeling</h3>
+                    <p class="mb-4">We engineered features from raw hypnogram data (sleep stage timings) to quantify sleep quality, such as sleep efficiency and latency. A Random Forest model was then trained to predict these quality metrics. The second phase involved a statistical analysis correlating our sleep findings with public socioeconomic datasets.</p>
+                    <img src="https://i.imgur.com/3Zk1gM1.png" alt="Hypnogram Chart" class="rounded-lg border border-gray-700" onerror="this.onerror=null;this.src='https://placehold.co/600x400/171721/ffffff?text=Hypnogram+Chart';">
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Key Achievement & Social Impact</h3>
+                    <p>The project successfully built a predictive model for sleep quality and uncovered a statistically significant, though complex, relationship between poorer sleep patterns and lower socioeconomic status. The work was awarded for its potential to highlight public health disparities and inform policy discussions around health equity.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Skills & Technologies</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Data Science</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Python</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Scikit-learn</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Pandas & NumPy</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Statistical Analysis</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Feature Engineering</span>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-700 flex justify-end space-x-4">
+                     <a href="https://github.com/ThomasPickle7/Datathon2024" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-semibold inline-flex items-center">View on GitHub <i class="ri-github-fill ml-2"></i></a>
+                     <button onclick="closeModal('powernapModal')" class="bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition">Close</button>
                 </div>
             </div>
         </div>
@@ -402,18 +449,26 @@
 
             // --- Modal Logic ---
             window.openModal = function(modalId) {
-                document.getElementById(modalId).classList.add('active');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                }
             }
 
             window.closeModal = function(modalId) {
-                document.getElementById(modalId).classList.remove('active');
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto'; // Restore background scrolling
+                }
             }
             
             // Close modal on escape key press
             window.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
                     document.querySelectorAll('.modal-overlay.active').forEach(modal => {
-                        modal.classList.remove('active');
+                        closeModal(modal.id);
                     });
                 }
             });
