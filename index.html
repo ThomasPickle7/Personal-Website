@@ -27,6 +27,53 @@
         .animate-scroll-down {
             animation: scroll-down 2s infinite;
         }
+        .social-icon {
+            @apply w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-700 text-2xl shadow-md hover:bg-indigo-600 hover:text-white transition-all duration-300;
+        }
+        .project-link {
+            @apply text-gray-600 hover:text-indigo-600 font-medium text-sm transition-colors inline-flex items-center;
+        }
+        .footer-link {
+            @apply text-gray-400 hover:text-white text-2xl transition-colors;
+        }
+        .skill-badge {
+            @apply bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-medium;
+        }
+        /* Modal Styles */
+        .modal-overlay {
+            visibility: hidden;
+            opacity: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-content {
+            background: rgba(23, 23, 33, 0.6); /* Semi-transparent dark background */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 800px; /* Increased max-width for better layout */
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
     </style>
 </head>
 <body class="bg-gray-100 text-gray-800 antialiased">
@@ -192,6 +239,21 @@
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                            <i class="ri-rss-line text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">High-Speed FPGA Data Acquisition for RadioHound</h3>
+                        <h4 class="text-sm font-medium text-indigo-600 mb-3">FPGA & Embedded Systems</h4>
+                        <p class="text-gray-600 mb-4">Engineered a high-throughput data pipeline on a BeagleV-Fire SoC to boost the RadioHound sensor's sampling rate beyond 48MHz.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-badge">FPGA</span>
+                            <span class="skill-badge">Verilog</span>
+                            <span class="skill-badge">Bare-Metal C</span>
+                            <span class="skill-badge">DMA</span>
+                        </div>
+                        <button onclick="openModal('radiohoundModal')" class="project-link font-semibold">Learn More <i class="ri-arrow-right-line ml-1"></i></button>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+                        <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
                             <i class="ri-cpu-line text-3xl"></i>
                         </div>
                         <h3 class="text-xl font-bold mb-2">16-bit FPGA CPU</h3>
@@ -205,7 +267,7 @@
                         <h3 class="text-xl font-bold mb-2">Beatbot</h3>
                         <h4 class="text-sm font-medium text-indigo-600 mb-3">Machine Learning</h4>
                         <p class="text-gray-600 mb-4">A classic machine learning project that utilizes various neural network architectures to classify songs by genre.</p>
-                         <a href="https://github.com/ThomasPickle7/378-Project" target="_blank" class="project-link font-semibold"><i class="ri-github-line mr-1"></i> View on GitHub</a>
+                         <a href="https://github.com/ThomasPickle7/378-Project" target="_blank" class="project-link font-semibold"><i class="ri-github-fill mr-1"></i> View on GitHub</a>
                     </div>
                     <div class="bg-gray-50 p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <div class="bg-indigo-100 text-indigo-600 w-16 h-16 rounded-full flex items-center justify-center mb-6">
@@ -214,7 +276,7 @@
                         <h3 class="text-xl font-bold mb-2">PowerNap</h3>
                         <h4 class="text-sm font-medium text-indigo-600 mb-3">Data Science & Social Impact</h4>
                         <p class="text-gray-600 mb-4">'Best Social Impact' award-winner at Rice Datathon. Predicts sleep quality from hypnograms and explores its link to socioeconomic status.</p>
-                         <a href="https://github.com/ThomasPickle7/Datathon2024" target="_blank" class="project-link font-semibold"><i class="ri-github-line mr-1"></i> View on GitHub</a>
+                         <a href="https://github.com/ThomasPickle7/Datathon2024" target="_blank" class="project-link font-semibold"><i class="ri-github-fill mr-1"></i> View on GitHub</a>
                     </div>
                 </div>
             </div>
@@ -256,20 +318,50 @@
         </div>
     </footer>
 
-    <style>
-        .social-icon {
-            @apply w-12 h-12 bg-white rounded-full flex items-center justify-center text-gray-700 text-2xl shadow-md hover:bg-indigo-600 hover:text-white transition-all duration-300;
-        }
-        .project-link {
-            @apply text-gray-600 hover:text-indigo-600 font-medium text-sm transition-colors inline-flex items-center;
-        }
-        .footer-link {
-            @apply text-gray-400 hover:text-white text-2xl transition-colors;
-        }
-        .skill-badge {
-            @apply bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-medium;
-        }
-    </style>
+    <div id="radiohoundModal" class="modal-overlay" onclick="closeModal('radiohoundModal')">
+        <div class="modal-content rounded-xl p-8" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-white">High-Speed FPGA Data Acquisition for RadioHound</h2>
+                <button onclick="closeModal('radiohoundModal')" class="text-gray-400 hover:text-white text-3xl">&times;</button>
+            </div>
+            
+            <div class="space-y-6 text-gray-300">
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2">The Goal</h3>
+                    <p>To design a high-speed data acquisition system to increase the RadioHound sensor's sampling rate beyond its current 48MHz limit. This was achieved by streaming ADC data directly through the BeagleV-Fire's FPGA fabric into DDR memory, minimizing CPU overhead.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2">System Architecture</h3>
+                    <p class="mb-4">The architecture creates a direct hardware path from the sensor input to system memory, using a custom Verilog module to pack data and a DMA controller to manage the high-speed transfer. Bare-metal C drivers provide precise, low-level control over the hardware.</p>
+                    <img src="https://i.imgur.com/gC5B2m5.png" alt="RadioHound System Architecture Diagram" class="rounded-lg border border-gray-700">
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Key Achievement & Validation</h3>
+                    <p>The core challenge was ensuring the DMA controller could correctly and efficiently access DDR memory through the FPGA fabric. I successfully validated the architecture by designing and executing a memory-to-memory DMA test, achieving a transfer rate of <span class="font-bold text-indigo-400">400 MSPS (Mega Samples Per Second)</span>. This critical result proved the viability of the high-speed data path before integrating the final sensor hardware.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Skills & Technologies</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">FPGA Development</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Verilog HDL</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Bare-Metal C</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Embedded Systems</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">DMA Controllers</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">AXI4-Stream Protocol</span>
+                        <span class="bg-gray-700 text-gray-200 font-medium px-3 py-1 rounded-md">Memory Protection Units (MPU)</span>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-700 flex justify-end space-x-4">
+                     <a href="https://github.com/ThomasPickle7/reu-scripts" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-semibold inline-flex items-center">View on GitHub <i class="ri-github-fill ml-2"></i></a>
+                     <button onclick="closeModal('radiohoundModal')" class="bg-gray-600 text-white font-semibold px-4 py-2 rounded-lg hover:bg-gray-700 transition">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -305,6 +397,24 @@
                     header.classList.add('shadow-md');
                 } else {
                     header.classList.remove('shadow-md');
+                }
+            });
+
+            // --- Modal Logic ---
+            window.openModal = function(modalId) {
+                document.getElementById(modalId).classList.add('active');
+            }
+
+            window.closeModal = function(modalId) {
+                document.getElementById(modalId).classList.remove('active');
+            }
+            
+            // Close modal on escape key press
+            window.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                        modal.classList.remove('active');
+                    });
                 }
             });
         });
